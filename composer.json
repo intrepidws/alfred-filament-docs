@@ -1,12 +1,12 @@
 {
-    "name": "clnt/alfred-tailwindcss-docs",
-    "description": "An ultra-fast TailwindCSS docs search workflow for Alfred 4.",
+    "name": "intrepidws/alfred-filament-docs",
+    "description": "An ultra-fast Filament docs search workflow for Alfred 4.",
     "version": "3.0.0",
-    "keywords": ["alfred", "alfred-workflow", "tailwindcss", "algolia"],
-    "homepage": "https://github.com/clnt",
+    "keywords": ["alfred", "alfred-workflow", "filament", "filament admin", "laravel", "algolia"],
+    "homepage": "https://www.intrepidws.com/",
     "support": {
-        "source": "https://github.com/clnt/alfred-tailwindcss-docs",
-        "issues": "https://github.com/clnt/alfred-tailwindcss-docs/issues"
+        "source": "https://github.com/intrepidws/alfred-filament-docs",
+        "issues": "https://github.com/intrepidws/alfred-filament-docs/issues"
     },
     "license": "MIT",
     "require": {

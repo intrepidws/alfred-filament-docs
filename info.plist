@@ -5,14 +5,14 @@
     <key>bundleid</key>
     <string>com.craiganderson.filament-docs</string>
     <key>category</key>
-    <string>Development</string>
+    <string>Productivity</string>
     <key>connections</key>
     <dict>
-        <key>7B86D057-4302-AF17-DA8E-83B889B48EE2</key>
+        <key>BA0F1293-462E-966E-0A15-7C84BCFBC501</key>
         <array>
             <dict>
                 <key>destinationuid</key>
-                <string>D449CB87-41F5-8FF0-B64C-C93C75686459</string>
+                <string>A0BE7549-4E85-86DC-BF89-E30C0D797564</string>
                 <key>modifiers</key>
                 <integer>0</integer>
                 <key>modifiersubtext</key>
@@ -47,7 +47,7 @@
             <key>type</key>
             <string>alfred.workflow.action.openurl</string>
             <key>uid</key>
-            <string>D449CB87-41F5-8FF0-B64C-C93C75686459</string>
+            <string>A0BE7549-4E85-86DC-BF89-E30C0D797564</string>
             <key>version</key>
             <integer>1</integer>
         </dict>
@@ -65,9 +65,9 @@
                 <key>argumenttype</key>
                 <integer>0</integer>
                 <key>escaping</key>
-                <integer>4</integer>
+                <integer>127</integer>
                 <key>keyword</key>
-                <string>ld</string>
+                <string>fm</string>
                 <key>queuedelaycustom</key>
                 <integer>3</integer>
                 <key>queuedelayimmediatelyinitially</key>
@@ -91,7 +91,7 @@ fi</string>
                 <key>scriptfile</key>
                 <string></string>
                 <key>subtext</key>
-                <string>Search the Filament 2x docs...</string>
+                <string>Search the Filament Docs...</string>
                 <key>title</key>
                 <string>Filament Docs</string>
                 <key>type</key>
@@ -102,7 +102,7 @@ fi</string>
             <key>type</key>
             <string>alfred.workflow.input.scriptfilter</string>
             <key>uid</key>
-            <string>7B86D057-4302-AF17-DA8E-83B889B48EE2</string>
+            <string>BA0F1293-462E-966E-0A15-7C84BCFBC501</string>
             <key>version</key>
             <integer>3</integer>
         </dict>
@@ -112,43 +112,35 @@ fi</string>
 
 ## Usage
 
-Just type `fm` followed by your search query.
+To search the [docs](https://filamentadmin.com/docs/2.x/admin/installation), just type `fm` followed by your search query.
 
 ```
 fm &lt;query&gt;
-fm create resource
 ```
 
-Either press `⌘Y` to Quick Look the result, or press `&lt;enter&gt;` to open it in your web browser.
-
-</string>
+Either press `⌘Y` to Quick Look the result, or press `&lt;enter&gt;` to open it in your web browser.</string>
     <key>uidata</key>
     <dict>
-        <key>7B86D057-4302-AF17-DA8E-83B889B48EE2</key>
+        <key>A0BE7549-4E85-86DC-BF89-E30C0D797564</key>
         <dict>
             <key>xpos</key>
-            <integer>200</integer>
+            <integer>650</integer>
             <key>ypos</key>
             <integer>90</integer>
         </dict>
-        <key>D449CB87-41F5-8FF0-B64C-C93C75686459</key>
+        <key>BA0F1293-462E-966E-0A15-7C84BCFBC501</key>
         <dict>
             <key>xpos</key>
-            <integer>510</integer>
+            <integer>340</integer>
             <key>ypos</key>
             <integer>90</integer>
         </dict>
-    </dict>
-    <key>variables</key>
-    <dict>
-        <key>branch</key>
-        <string>8.x</string>
     </dict>
     <key>variablesdontexport</key>
     <array/>
     <key>version</key>
-    <string>0.3.2</string>
+    <string>1.0.0</string>
     <key>webaddress</key>
-    <string>https://www.intrepidws.com/</string>
+    <string>https://github.com/intrepidws/alfred-filament-docs</string>
 </dict>
 </plist>
