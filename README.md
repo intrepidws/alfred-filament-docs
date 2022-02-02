@@ -17,7 +17,7 @@ Adapted from [Alfred TailwindCSS Docs](https://github.com/clnt/alfred-tailwindcs
 
 ## Usage
 
-To search the [v2 docs](https://filamentadmin.com/docs/2.x/admin/installation), just type `fm` followed by your search query.
+To search the [docs](https://filamentadmin.com/docs/2.x/admin/installation), just type `fm` followed by your search query.
 
 ```
 fm <query>
