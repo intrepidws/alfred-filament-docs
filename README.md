@@ -17,10 +17,24 @@ Adapted from [Alfred TailwindCSS Docs](https://github.com/clnt/alfred-tailwindcs
 
 ## Usage
 
-To search the [docs](https://filamentadmin.com/docs/2.x/admin/installation), just type `fm` followed by your search query.
+To search the [3.x docs](https://filamentphp.com/docs/3.x/panels/installation), just type `fm` (or `fm3`) followed by your search query.
 
 ```
-fm <query>
+fm3 <query>
 ```
+
+To search the [2.x docs](https://filamentphp.com/docs/2.x/admin/installation), just type `fm2` followed by your search query.
+
+```
+fm2 <query>
+```
+
+To search the [1.x docs](https://filamentphp.com/docs/1.x/admin/getting-started), just type `fm1` followed by your search query.
+
+```
+fm1 <query>
+```
+
+Either press `⌘Y` to Quick Look the result, or press `<enter>` to open it in your web browser.
 
 ![Search by Algolia](algolia.png)

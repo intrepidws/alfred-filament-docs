@@ -1,10 +1,20 @@
 <?php
 
-function getResults($algolia, $indexName, $query)
+function getResults($algolia, $indexName, $query, $version)
 {
+    if ($version === 'v1') {
+        $facetFilter = ['version:1.x'];
+    } elseif ($version === 'v2') {
+        $facetFilter = ['version:2.x'];
+    } else {
+        $facetFilter = ['version:3.x'];
+    }
+
+    $params = ['facetFilters' => $facetFilter];
+
     $index = $algolia->initIndex($indexName);
 
-    return $index->search($query)['hits'];
+    return $index->search($query, $params)['hits'];
 }
 
 function getTitle($hit)
