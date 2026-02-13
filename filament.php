@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 use Alfred\Workflows\Workflow;
 
 use Algolia\AlgoliaSearch\SearchClient as Algolia;
@@ -9,7 +11,7 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
 
 $query = $argv[1];
-$version = isset($argv[2]) ? $argv[2] : 'v3';
+$version = isset($argv[2]) ? $argv[2] : 'v5';
 
 $workflow = new Workflow;
 $algolia = Algolia::create('LMIKXMDI4P', '1e3d12b0b9c3a4db16cd896e83b9efa0');

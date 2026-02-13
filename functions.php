@@ -6,8 +6,12 @@ function getResults($algolia, $indexName, $query, $version)
         $facetFilter = ['version:1.x'];
     } elseif ($version === 'v2') {
         $facetFilter = ['version:2.x'];
-    } else {
+    } elseif ($version === 'v3') {
         $facetFilter = ['version:3.x'];
+    } elseif ($version === 'v4') {
+        $facetFilter = ['version:4.x'];
+    } else {
+        $facetFilter = ['version:5.x'];
     }
 
     $params = ['facetFilters' => $facetFilter];
