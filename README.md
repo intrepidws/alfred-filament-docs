@@ -17,13 +17,13 @@ Adapted from [Alfred TailwindCSS Docs](https://github.com/clnt/alfred-tailwindcs
 
 ## Usage
 
-To search the [5.x docs](https://filamentphp.com/docs/5.x/panels/installation), just type `fm` (or `fm5`) followed by your search query.
+To search the [5.x docs](https://filamentphp.com/docs/5.x/introduction/overview), just type `fm` (or `fm5`) followed by your search query.
 
 ```
 fm <query>
 ```
 
-To search the [4.x docs](https://filamentphp.com/docs/4.x/panels/installation), just type `fm4` followed by your search query.
+To search the [4.x docs](https://filamentphp.com/docs/4.x/introduction/overview), just type `fm4` followed by your search query.
 
 ```
 fm4 <query>
@@ -41,7 +41,7 @@ To search the [2.x docs](https://filamentphp.com/docs/2.x/admin/installation), j
 fm2 <query>
 ```
 
-To search the [1.x docs](https://filamentphp.com/docs/1.x/admin/getting-started), just type `fm1` followed by your search query.
+To search the [1.x docs](https://filamentphp.com/docs/1.x/getting-started), just type `fm1` followed by your search query.
 
 ```
 fm1 <query>

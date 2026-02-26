@@ -466,13 +466,13 @@ fi</string>
 
 ## Usage
 
-To search the [5.x docs](https://filamentphp.com/docs/5.x/panels/installation), just type `fm` (or `fm5`) followed by your search query.
+To search the [5.x docs](https://filamentphp.com/docs/5.x/introduction/overview), just type `fm` (or `fm5`) followed by your search query.
 
 ```
 fm &lt;query&gt;
 ```
 
-To search the [4.x docs](https://filamentphp.com/docs/4.x/panels/installation), just type `fm4` followed by your search query.
+To search the [4.x docs](https://filamentphp.com/docs/4.x/introduction/overview), just type `fm4` followed by your search query.
 
 ```
 fm4 &lt;query&gt;
@@ -490,13 +490,12 @@ To search the [2.x docs](https://filamentphp.com/docs/2.x/admin/installation), j
 fm2 &lt;query&gt;
 ```
 
-To search the [1.x docs](https://filamentphp.com/docs/1.x/admin/getting-started), just type `fm1` followed by your search query.
+To search the [1.x docs](https://filamentphp.com/docs/1.x/getting-started), just type `fm1` followed by your search query.
 
 ```
 fm1 &lt;query&gt;
 ```
-
-Either press `⌘Y` to Quick Look the result, or press `&lt;enter&gt;` to open it in your web browser.</string>
+</string>
 	<key>uidata</key>
 	<dict>
 		<key>55304EA7-02C8-4736-8CE9-B94B3190D187</key>
