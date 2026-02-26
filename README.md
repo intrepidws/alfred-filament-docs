@@ -9,7 +9,7 @@ Adapted from [Alfred TailwindCSS Docs](https://github.com/clnt/alfred-tailwindcs
 ## Installation
 
 
-> **macOS Monterey:** PHP is no longer shipped with macOS, before attempting to use this workflow ensure you have installed the php binary via Homebrew.
+> **PHP Notice:** Since macOS Monterey, PHP is no longer shipped with macOS. Before attempting to use this workflow, please ensure that you have installed the php binary via Laravel Herd or Homebrew.
 
 1. [Download the latest version](https://github.com/intrepidws/alfred-filament-docs/releases/download/v3.0.0/Filament.Docs.alfredworkflow)
 2. Install the workflow by double-clicking the `.alfredworkflow` file
