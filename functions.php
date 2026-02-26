@@ -1,64 +1,98 @@
 <?php
 
-function getResults($algolia, $indexName, $query, $version)
+define('TRIEVE_API_URL', 'https://api.mintlifytrieve.com/api/chunk_group/group_oriented_autocomplete');
+define('TRIEVE_DATASET_ID', 'd37f36e7-f12a-433a-8893-a5f2189647f5');
+define('TRIEVE_API_KEY', 'tr-T6JLeTkFXeNbNPyhijtI9XhIncydQQ3O');
+define('FILAMENT_DOCS_BASE_URL', 'https://filamentphp.com/docs/');
+
+function getResults($query, $version)
 {
-    if ($version === 'v1') {
-        $facetFilter = ['version:1.x'];
-    } elseif ($version === 'v2') {
-        $facetFilter = ['version:2.x'];
-    } elseif ($version === 'v3') {
-        $facetFilter = ['version:3.x'];
-    } elseif ($version === 'v4') {
-        $facetFilter = ['version:4.x'];
-    } else {
-        $facetFilter = ['version:5.x'];
+    $versionTag = match ($version) {
+        'v1' => 'VERSION:1.x',
+        'v2' => 'VERSION:2.x',
+        'v3' => 'VERSION:3.x',
+        'v4' => 'VERSION:4.x',
+        default => 'VERSION:5.x',
+    };
+
+    $payload = [
+        'query' => $query,
+        'search_type' => 'fulltext',
+        'page_size' => 10,
+        'group_size' => 1,
+        'score_threshold' => 0.2,
+        'filters' => [
+            'must_not' => [['field' => 'tag_set', 'match' => ['code']]],
+            'must' => [['field' => 'tag_set', 'match_any' => [$versionTag, 'VERSION:*']]]
+        ]
+    ];
+
+    $ch = curl_init(TRIEVE_API_URL);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'TR-Dataset: ' . TRIEVE_DATASET_ID,
+        'Authorization: ' . TRIEVE_API_KEY,
+        'X-API-Version: V2'
+    ]);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200 || !$response) {
+        return [];
     }
 
-    $params = ['facetFilters' => $facetFilter];
+    $data = json_decode($response, true);
 
-    $index = $algolia->initIndex($indexName);
-
-    return $index->search($query, $params)['hits'];
-}
-
-function getTitle($hit)
-{
-    if (isset($hit['hierarchy']['lvl6'])) {
-        return [$hit['hierarchy']['lvl6'], 6];
+    if (!isset($data['results']) || empty($data['results'])) {
+        return [];
     }
 
-    if (isset($hit['hierarchy']['lvl5'])) {
-        return [$hit['hierarchy']['lvl5'], 5];
+    $results = [];
+    $seen = [];
+
+    foreach ($data['results'] as $group) {
+        if (!isset($group['chunks'])) {
+            continue;
+        }
+
+        foreach ($group['chunks'] as $chunkData) {
+            $chunk = $chunkData['chunk'] ?? null;
+
+            if (!$chunk) {
+                continue;
+            }
+
+            $link = $chunk['link'] ?? null;
+            $title = $chunk['metadata']['title'] ?? null;
+            $breadcrumbs = $chunk['metadata']['breadcrumbs'] ?? [];
+
+            if (!$link || !$title) {
+                continue;
+            }
+
+            // Skip duplicates
+            if (isset($seen[$link])) {
+                continue;
+            }
+            $seen[$link] = true;
+
+            $url = FILAMENT_DOCS_BASE_URL . $link;
+            $subtitle = implode(' » ', $breadcrumbs);
+
+            $results[] = [
+                'id' => $chunk['id'],
+                'title' => html_entity_decode($title),
+                'subtitle' => html_entity_decode($subtitle),
+                'url' => $url,
+            ];
+        }
     }
 
-    if (isset($hit['hierarchy']['lvl4'])) {
-        return [$hit['hierarchy']['lvl4'], 4];
-    }
-
-    if (isset($hit['hierarchy']['lvl3'])) {
-        return [$hit['hierarchy']['lvl3'], 3];
-    }
-
-    if (isset($hit['hierarchy']['lvl2'])) {
-        return [$hit['hierarchy']['lvl2'], 2];
-    }
-
-    if (isset($hit['hierarchy']['lvl1'])) {
-        return [$hit['hierarchy']['lvl1'], 1];
-    }
-
-    return [null, null];
-}
-
-function getSubtitle($hit, $titleLevel)
-{
-    $currentLevel = 0;
-    $subtitle = $hit['hierarchy']['lvl0'];
-
-    while ($currentLevel < $titleLevel) {
-        $currentLevel++;
-        $subtitle .= ' » ' . $hit['hierarchy']['lvl' . $currentLevel];
-    }
-
-    return $subtitle;
+    return $results;
 }

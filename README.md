@@ -48,5 +48,3 @@ fm1 <query>
 ```
 
 Press `<enter>` to open it in your web browser.
-
-![Search by Algolia](algolia.png)
