@@ -10,6 +10,8 @@ use Algolia\AlgoliaSearch\Support\UserAgent as AlgoliaUserAgent;
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
 
+$icons = ['icon-sparky.png', 'icon-atlas.png', 'icon-barney.png'];
+
 $query = $argv[1];
 $version = isset($argv[2]) ? $argv[2] : 'v5';
 
@@ -50,6 +52,7 @@ foreach ($results as $hit) {
         ->subtitle(html_entity_decode(getSubtitle($hit, $titleLevel)))
         ->arg($hit['url'])
         ->quicklookurl($hit['url'])
+        ->icon($icons[array_rand($icons)])
         ->valid(true);
 }
 
